@@ -1,0 +1,190 @@
+$accent-color: #c97b1a; // Egyptian gold
+$background-image: url('https://curiosmos.com/wp-content/uploads/2019/06/Hypostyle-hall-with-columns-in-the-temple-of-Hathor-at-Dendera-Egypt.jpg'); // New Cairo Nile & gardens image
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+
+  background: $background-image no-repeat center center fixed;
+  background-size: cover;
+}
+.page-title {
+  width: 100%;
+  text-align: center;
+  margin: 1em 0;
+
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    letter-spacing: 2px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 420px;
+  height: 340px;
+  margin: 1em;
+  perspective: 1500px;
+
+  .content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.75, 0, 0.85, 1);
+  }
+
+  .more {
+    display: none;
+
+    &:checked ~ .content {
+      transform: rotateY(180deg);
+    }
+  }
+
+  .front,
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    border-radius: 8px;
+
+    .inner {
+      display: grid;
+      height: 100%;
+      padding: 1.5em;
+      transform: translateZ(80px) scale(0.94);
+    }
+  }
+
+  .front {
+    background-size: cover;
+    background-position: center;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      backface-visibility: hidden;
+      // Slightly more transparent yellow overlay
+      background: linear-gradient(40deg, rgba(201,123,26,0.5), rgba(255,218,121,0.3));
+    }
+
+    h2 {
+      grid-row: 2;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #fff;
+      font-weight: 500;
+      text-shadow: 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    .rating {
+      grid-row: 3;
+      color: rgba(255,255,255,0.85);
+      display: flex;
+      justify-content: center;
+      i { margin: 0 1px; }
+    }
+
+    .button {
+      grid-row: 4;
+      justify-self: center;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0 1.5em;
+      height: 3em;
+      line-height: 2.9em;
+      min-width: 3em;
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      border-radius: 4px;
+      text-align: center;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        background-color: #fff;
+        color: $accent-color;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5);
+      }
+    }
+  }
+
+  .back {
+    transform: rotateY(180deg);
+    background-color: #fff;
+    border: 2px solid #eee;
+
+    .inner {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto auto;
+      grid-column-gap: 0.8em;
+      justify-items: center;
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      color: $accent-color;
+      span { font-size: 2em; font-weight: 700; margin-right: 0.3em; }
+      .icon span { font-size: 0.8em; font-weight: 600; }
+      i { font-size: 1.2em; margin-right: 0.3em; }
+    }
+
+    .description {
+      font-size: 0.86em;
+      font-weight: 600;
+      line-height: 1.4em;
+	  text-align: center;
+      color: $accent-color;
+      overflow: auto;
+      padding-right: 10px;
+    }
+
+    .location, .price {
+      font-weight: 600;
+      color: $accent-color;
+      font-size: 0.86em;
+    }
+
+    .button.return {
+      line-height: 3em;
+      color: $accent-color;
+      border-color: $accent-color;
+      &:hover { background-color: $accent-color; color: #fff; }
+    }
+  }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: lighten($accent-color, 20%); }
+::-webkit-scrollbar-thumb:hover { background: $accent-color; }
