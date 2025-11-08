@@ -1,0 +1,93 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 300vh;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.planet {
+  position: absolute;
+  width: 40%;
+  top: 25%;
+  left: 30%;
+  z-index: 2;
+  opacity: 0;
+}
+
+.planet2 {
+  position: absolute;
+  width: 35%;
+  top: 35%;
+  left: 60%;
+  z-index: 2;
+  opacity: 0;
+}
+
+.asteroids {
+  position: absolute;
+  width: 20%;
+  top: 45%;
+  left: 20%;
+  z-index: 3;
+  opacity: 0;
+}
+
+.comets {
+  position: absolute;
+  width: 15%;
+  top: 15%;
+  left: 75%;
+  z-index: 4;
+  opacity: 0;
+}
+
+.astronaut {
+  position: absolute;
+  width: 15%;
+  top: 55%;
+  left: 65%;
+  z-index: 5;
+  opacity: 0;
+}
+
+.title {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
+  z-index: 6;
+  text-align: center;
+  text-shadow: 0 0 10px #fff, 0 0 40px #00b3ff;
+  opacity: 1;
+}
+
+.text {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 800px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 8px #000;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
